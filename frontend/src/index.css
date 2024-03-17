@@ -17,8 +17,11 @@ body {
 
 /* login signup sidebar bg image */
 .loginSidebar {
-    background-image: url("https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png");
+    background-image: url(../src/assets/images/sidebarbg.png);
+    background-size: 50%;
     background-position: center 85%;
     background-repeat: no-repeat;
+    backdrop-filter: blur(5px); /* Add this line to apply blur effect */
 }
+
 /* login signup sidebar bg image */
