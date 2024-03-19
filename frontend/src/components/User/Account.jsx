@@ -19,7 +19,7 @@ const Account = () => {
     }, [isAuthenticated, navigate]);
 
     const getLastName = () => {
-        const nameArray = user.name.split(" ");
+        const nameArray = user.name.split("");
         return nameArray[nameArray.length - 1];
     }
 

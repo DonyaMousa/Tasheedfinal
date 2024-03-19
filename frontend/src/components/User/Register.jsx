@@ -130,7 +130,7 @@ const Register = () => {
                                 <div className="flex flex-col w-full justify-between sm:flex-row gap-3 items-center"></div>
 
             
-                                <button type="submit" className="text-primary-gold </Link>white py-3 w-full bg-black shadow hover:shadow-lg rounded-lg font-medium">Signup</button>
+                                <button type="submit" className="text-primary-gold </Link>white py-3 w-full bg-black shadow hover:shadow-lg rounded-sm font-medium">Signup</button>
                                 <Link to="/login" className="hover:bg-gray-50 text-black text-center py-3 w-full shadow-lg border rounded-lg font-medium">
                                 Existing User? <span className="text-primary-gold">Log in</span>
                                 </Link>                            </div>
