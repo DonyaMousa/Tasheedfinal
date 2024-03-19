@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField'
-import Avatar from '@mui/material/Avatar'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
 import { useSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +16,7 @@ const Register = () => {
 
     const { loading, isAuthenticated, error } = useSelector((state) => state.user);
 
-    const [user, setUser] = useState({
+    const [user] = useState({
         name: "",
         email: "",
         gender: "",
@@ -28,10 +24,9 @@ const Register = () => {
         cpassword: "",
     });
 
-    const { name, email, gender, password, cpassword } = user;
+    const { name, email, password, cpassword } = user;
 
-    const [avatar, setAvatar] = useState();
-    const [avatarPreview, setAvatarPreview] = useState("preview.png");
+
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -43,37 +38,14 @@ const Register = () => {
             enqueueSnackbar("Password Doesn't Match", { variant: "error" });
             return;
         }
-        if (!avatar) {
-            enqueueSnackbar("Select Avatar", { variant: "error" });
-            return;
-        }
+
 
         const formData = new FormData();
         formData.set("name", name);
         formData.set("email", email);
-        formData.set("gender", gender);
         formData.set("password", password);
-        formData.set("avatar", avatar);
 
         dispatch(registerUser(formData));
-    }
-
-    const handleDataChange = (e) => {
-        if (e.target.name === "avatar") {
-            const reader = new FileReader();
-
-            reader.onload = () => {
-                if (reader.readyState === 2) {
-                    setAvatarPreview(reader.result);
-                    setAvatar(reader.result);
-                }
-            };
-
-            reader.readAsDataURL(e.target.files[0]);
-
-        } else {
-            setUser({ ...user, [e.target.name]: e.target.value });
-        }
     }
 
     useEffect(() => {
@@ -120,7 +92,7 @@ const Register = () => {
                                         label="Full Name"
                                         name="name"
                                         value={name}
-                                        onChange={handleDataChange}
+                                        // onChange={handleDataChange}
                                         required
                                     />
                                     <TextField
@@ -130,29 +102,11 @@ const Register = () => {
                                         type="email"
                                         name="email"
                                         value={email}
-                                        onChange={handleDataChange}
+                                        // onChange={handleDataChange}
                                         required
                                     />
                                 </div>
-                                {/* <!-- input container column --> */}
-
-                                {/* <!-- gender input --> */}
-                                <div className="flex gap-4 items-center">
-                                    <h2 className="text-md">Your Gender :</h2>
-                                    <div className="flex items-center gap-6" id="radioInput">
-                                        <RadioGroup
-                                            row
-                                            aria-labelledby="radio-buttons-group-label"
-                                            name="radio-buttons-group"
-                                        >
-                                            <FormControlLabel name="gender" value="male" onChange={handleDataChange} control={<Radio required />} label="Male" />
-                                            <FormControlLabel name="gender" value="female" onChange={handleDataChange} control={<Radio required />} label="Female" />
-                                        </RadioGroup>
-                                    </div>
-                                </div>
-                                {/* <!-- gender input --> */}
-
-                                {/* <!-- input container column --> */}
+                                
                                 <div className="flex flex-col w-full justify-between sm:flex-row gap-3 items-center">
                                     <TextField
                                         id="password"
@@ -160,7 +114,7 @@ const Register = () => {
                                         type="password"
                                         name="password"
                                         value={password}
-                                        onChange={handleDataChange}
+                                        // onChange={handleDataChange}
                                         required
                                     />
                                     <TextField
@@ -169,32 +123,17 @@ const Register = () => {
                                         type="password"
                                         name="cpassword"
                                         value={cpassword}
-                                        onChange={handleDataChange}
+                                        // onChange={handleDataChange}
                                         required
                                     />
                                 </div>
-                                {/* <!-- input container column --> */}
+                                <div className="flex flex-col w-full justify-between sm:flex-row gap-3 items-center"></div>
 
-                                <div className="flex flex-col w-full justify-between sm:flex-row gap-3 items-center">
-                                    <Avatar
-                                        alt="Avatar Preview"
-                                        src={avatarPreview}
-                                        sx={{ width: 56, height: 56 }}
-                                    />
-                                    <label className="rounded font-medium bg-gray-400 text-center cursor-pointer text-white w-full py-2 px-2.5 shadow hover:shadow-lg">
-                                        <input
-                                            type="file"
-                                            name="avatar"
-                                            accept="image/*"
-                                            onChange={handleDataChange}
-                                            className="hidden"
-                                        />
-                                        Choose File
-                                    </label>
-                                </div>
-                                <button type="submit" className="text-white py-3 w-full bg-primary-orange shadow hover:shadow-lg rounded-sm font-medium">Signup</button>
-                                <Link to="/login" className="hover:bg-gray-50 text-primary-blue text-center py-3 w-full shadow border rounded-sm font-medium">Existing User? Log in</Link>
-                            </div>
+            
+                                <button type="submit" className="text-primary-gold </Link>white py-3 w-full bg-black shadow hover:shadow-lg rounded-sm font-medium">Signup</button>
+                                <Link to="/login" className="hover:bg-gray-50 text-black text-center py-3 w-full shadow-lg border rounded-sm font-medium">
+                                Existing User? <span className="text-primary-gold">Log in</span>
+                                </Link>                            </div>
 
                         </form>
                         {/* <!-- personal info procedure container --> */}
