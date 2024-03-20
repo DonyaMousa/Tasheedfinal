@@ -57,7 +57,7 @@ const Account = () => {
                                         </div>
 
                                         {/* <!-- gender --> */}
-                                        <div className="flex flex-col gap-2">
+                                        {/* <div className="flex flex-col gap-2">
                                             <h2 className="text-sm">Your Gender</h2>
                                             <div className="flex items-center gap-8" id="radioInput">
                                                 <div className="flex items-center gap-4 inputs text-gray-500 cursor-not-allowed">
@@ -69,7 +69,7 @@ const Account = () => {
                                                     <label htmlFor="female" className="cursor-not-allowed">Female</label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         {/* <!-- gender --> */}
 
                                     </div>

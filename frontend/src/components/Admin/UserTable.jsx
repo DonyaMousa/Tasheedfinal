@@ -46,7 +46,6 @@ const UserTable = () => {
                 return (
                     <div className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-full">
-                            <img draggable="false" src={params.row.avatar} alt={params.row.name} className="w-full h-full rounded-full object-cover" />
                         </div>
                         {params.row.name}
                     </div>
@@ -59,12 +58,7 @@ const UserTable = () => {
             minWidth: 200,
             flex: 0.2,
         },
-        {
-            field: "gender",
-            headerName: "Gender",
-            minWidth: 100,
-            flex: 0.1,
-        },
+        
         {
             field: "role",
             headerName: "Role",
@@ -112,9 +106,7 @@ const UserTable = () => {
         rows.unshift({
             id: item._id,
             name: item.name,
-            avatar: item.avatar.url,
             email: item.email,
-            gender: item.gender.toUpperCase(),
             role: item.role,
             registeredOn: new Date(item.createdAt).toISOString().substring(0, 10),
         });

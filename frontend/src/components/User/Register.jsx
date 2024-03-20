@@ -19,7 +19,7 @@ const Register = () => {
     const [user] = useState({
         name: "",
         email: "",
-        gender: "",
+        // gender: "",
         password: "",
         cpassword: "",
     });

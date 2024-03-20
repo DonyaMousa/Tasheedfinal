@@ -15,12 +15,11 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
         crop: "scale",
     });
 
-    const { name, email, gender, password } = req.body;
+    const { name, email, password } = req.body;
 
     const user = await User.create({
         name, 
         email,
-        gender,
         password,
         avatar: {
             public_id: myCloud.public_id,
@@ -230,7 +229,6 @@ exports.updateUserRole = asyncErrorHandler(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
-        gender: req.body.gender,
         role: req.body.role,
     }
 
