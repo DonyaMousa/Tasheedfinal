@@ -36,6 +36,8 @@ import UpdateUser from './components/Admin/UpdateUser';
 import ReviewsTable from './components/Admin/ReviewsTable';
 import Wishlist from './components/Wishlist/Wishlist';
 import NotFound from './components/NotFound';
+// import {Translator, Translate} from 'react-auto-translate';
+
 
 function App() {
 
@@ -47,6 +49,10 @@ function App() {
   //   const { data } = await axios.get('/api/v1/stripeapikey');
   //   setStripeApiKey(data.stripeApiKey);
   // }
+ 
+
+
+
 
   useEffect(() => {
     WebFont.load({
@@ -113,7 +119,7 @@ function App() {
             {/* // </Elements> */}
             {/* ) */}
           </ProtectedRoute>
-        } ></Route>
+         } ></Route> 
 
         <Route path="/orders/success" element={<OrderSuccess success={true} />} />
         <Route path="/orders/failed" element={<OrderSuccess success={false} />} />
