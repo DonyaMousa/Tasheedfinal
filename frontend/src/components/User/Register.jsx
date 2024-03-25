@@ -16,7 +16,7 @@ const Register = () => {
 
     const { loading, isAuthenticated, error } = useSelector((state) => state.user);
 
-    const [user] = useState({
+    const [user,setUser] = useState({
         name: "",
         email: "",
         // gender: "",
@@ -58,6 +58,24 @@ const Register = () => {
         }
     }, [dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
 
+
+    const handleDataChange = (e) => {
+        if (e.target.name === "avatar") {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                }
+            };
+
+            reader.readAsDataURL(e.target.files[0]);
+
+        } else {
+            setUser({ ...user, [e.target.name]: e.target.value });
+        }
+    }
+
+
     return (
         <>
             <MetaData title="Register | Flipkart" />
@@ -92,7 +110,7 @@ const Register = () => {
                                         label="Full Name"
                                         name="name"
                                         value={name}
-                                        // onChange={handleDataChange}
+                                        onChange={handleDataChange}
                                         required
                                     />
                                     <TextField
@@ -102,7 +120,7 @@ const Register = () => {
                                         type="email"
                                         name="email"
                                         value={email}
-                                        // onChange={handleDataChange}
+                                        onChange={handleDataChange}
                                         required
                                     />
                                 </div>
@@ -114,7 +132,7 @@ const Register = () => {
                                         type="password"
                                         name="password"
                                         value={password}
-                                        // onChange={handleDataChange}
+                                        onChange={handleDataChange}
                                         required
                                     />
                                     <TextField
@@ -123,7 +141,7 @@ const Register = () => {
                                         type="password"
                                         name="cpassword"
                                         value={cpassword}
-                                        // onChange={handleDataChange}
+                                        onChange={handleDataChange}
                                         required
                                     />
                                 </div>
