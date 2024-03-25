@@ -36,6 +36,8 @@ import UpdateUser from './components/Admin/UpdateUser';
 import ReviewsTable from './components/Admin/ReviewsTable';
 import Wishlist from './components/Wishlist/Wishlist';
 import NotFound from './components/NotFound';
+import axios from 'axios';
+import { useState } from 'react';
 // import {Translator, Translate} from 'react-auto-translate';
 
 
@@ -43,12 +45,12 @@ function App() {
 
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  // const [stripeApiKey, setStripeApiKey] = useState("");
+  const [stripeApiKey, setStripeApiKey] = useState("");
 
-  // async function getStripeApiKey() {
-  //   const { data } = await axios.get('/api/v1/stripeapikey');
-  //   setStripeApiKey(data.stripeApiKey);
-  // }
+  async function getStripeApiKey() {
+    const { data } = await axios.get('/api/v1/stripeapikey');
+    setStripeApiKey(data.stripeApiKey);
+  }
  
 
 
@@ -64,7 +66,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
-    // getStripeApiKey();
+    getStripeApiKey();
   }, [dispatch]);
 
   // always scroll to top on route/path change
@@ -77,12 +79,12 @@ function App() {
   }, [pathname])
 
   // disable right click
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
-  window.addEventListener("keydown", (e) => {
-    if (e.keyCode == 123) e.preventDefault();
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) e.preventDefault();
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) e.preventDefault();
-  });
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
+  // window.addEventListener("keydown", (e) => {
+  //   if (e.keyCode == 123) e.preventDefault();
+  //   if (e.ctrlKey && e.shiftKey && e.keyCode === 73) e.preventDefault();
+  //   if (e.ctrlKey && e.shiftKey && e.keyCode === 74) e.preventDefault();
+  // });
   
   return (
     <>
