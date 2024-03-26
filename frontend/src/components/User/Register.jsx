@@ -75,7 +75,6 @@ const Register = () => {
         }
     }
 
-
     return (
         <>
             <MetaData title="Register | Flipkart" />

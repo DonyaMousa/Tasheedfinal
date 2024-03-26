@@ -12,7 +12,7 @@ const footerLinks = [
     links: [
       {
         name: "Contact Us",
-        redirect: "https://www.flipkart.com/helpcentre",
+        redirect: "https://http://localhost:3000",
       },
       {
         name: "About Us",
